@@ -3,6 +3,7 @@ package com.example.ordering_system;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -35,6 +36,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
 	private ListView waitlistview ;
 	private ListViewAdapter adapter1;
 	private ListViewAdapter adapter2;
+	
+	private int btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
         customerview.setAdapter(adapter1);
         waitlistview = (ListView) findViewById(R.id.waitlist);
         waitlistview.setAdapter(adapter2);
+        
+        BtnThread.setDaemon(true);
+        BtnThread.start();
 
     }
     
@@ -68,8 +74,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 		int i = v.getId();
 
         if (i == R.id.reservation) {
-        	reservation();
-        	
+        	reservation();        	
         }
         else if (i == R.id.order) {
         }
@@ -174,4 +179,38 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			}			
 		}
 	}
+	
+	Thread BtnThread = new Thread(new Runnable() {
+
+        @Override
+        public void run() {
+            while (true) {
+                try {
+                    BtnThread.sleep(1000);
+                    btn = GetTouch();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                    	if(btn==1){
+                    		while(CustomerList.size() != 0)
+                    			CustomerList.removeFirst();
+                    		while(WaitList.size() != 0)
+                    			WaitList.removeFirst();
+                    		adapter1.RemoveAllItem();
+                    		adapter2.RemoveAllItem();
+                    		adapter1.notifyDataSetChanged();
+                    		adapter2.notifyDataSetChanged();
+                    		Toast.makeText(MainActivity.this, "손님 내쫓기." ,Toast.LENGTH_SHORT).show();
+                    	}
+                        //timerview.setText(String.valueOf(time));
+                        //handler.sendEmptyMessage(time);
+                    }
+                });
+            }
+        }
+    });
+
 }

@@ -94,5 +94,8 @@ public class ListViewAdapter extends BaseAdapter {
     		}
     	}
     }
+    public void RemoveAllItem(){
+    	listViewItemList.clear();
+    }
 
 }
