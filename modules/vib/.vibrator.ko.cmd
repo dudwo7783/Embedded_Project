@@ -1,0 +1,1 @@
+cmd_/home/youngjae/edk9/modules/vib/vibrator.ko := arm-none-linux-gnueabi-ld -EL -r  -T /home/youngjae/edk9/linux/scripts/module-common.lds --build-id  -o /home/youngjae/edk9/modules/vib/vibrator.ko /home/youngjae/edk9/modules/vib/vibrator.o /home/youngjae/edk9/modules/vib/vibrator.mod.o

@@ -1,0 +1,1 @@
+cmd_/home/youngjae/edk9/modules/7segment/dd_7segment.ko := arm-none-linux-gnueabi-ld -EL -r  -T /home/youngjae/edk9/linux/scripts/module-common.lds --build-id  -o /home/youngjae/edk9/modules/7segment/dd_7segment.ko /home/youngjae/edk9/modules/7segment/dd_7segment.o /home/youngjae/edk9/modules/7segment/dd_7segment.mod.o

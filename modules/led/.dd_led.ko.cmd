@@ -1,0 +1,1 @@
+cmd_/home/youngjae/edk9/modules/led/dd_led.ko := arm-none-linux-gnueabi-ld -EL -r  -T /home/youngjae/edk9/linux/scripts/module-common.lds --build-id  -o /home/youngjae/edk9/modules/led/dd_led.ko /home/youngjae/edk9/modules/led/dd_led.o /home/youngjae/edk9/modules/led/dd_led.mod.o

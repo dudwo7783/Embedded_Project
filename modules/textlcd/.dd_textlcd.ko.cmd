@@ -1,0 +1,1 @@
+cmd_/home/youngjae/edk9/modules/textlcd/dd_textlcd.ko := arm-none-linux-gnueabi-ld -EL -r  -T /home/youngjae/edk9/linux/scripts/module-common.lds --build-id  -o /home/youngjae/edk9/modules/textlcd/dd_textlcd.ko /home/youngjae/edk9/modules/textlcd/dd_textlcd.o /home/youngjae/edk9/modules/textlcd/dd_textlcd.mod.o

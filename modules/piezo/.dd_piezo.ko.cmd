@@ -1,0 +1,1 @@
+cmd_/home/youngjae/edk9/modules/piezo/dd_piezo.ko := arm-none-linux-gnueabi-ld -EL -r  -T /home/youngjae/edk9/linux/scripts/module-common.lds --build-id  -o /home/youngjae/edk9/modules/piezo/dd_piezo.ko /home/youngjae/edk9/modules/piezo/dd_piezo.o /home/youngjae/edk9/modules/piezo/dd_piezo.mod.o
