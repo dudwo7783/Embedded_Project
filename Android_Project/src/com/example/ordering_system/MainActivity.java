@@ -1,6 +1,9 @@
 package com.example.ordering_system;
 
 
+import java.util.ArrayList;
+import java.util.TimerTask;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -36,8 +39,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
 	private ListView waitlistview ;
 	private ListViewAdapter adapter1;
 	private ListViewAdapter adapter2;
+	private MenuAdapter menulist;
 	
 	private int btn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +61,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         // Adapter 생성
         adapter1 = new ListViewAdapter();
         adapter2 = new ListViewAdapter();
+        menulist = new MenuAdapter() ;
 
         // 리스트뷰 참조 및 Adapter달기
         customerview = (ListView) findViewById(R.id.customerlist);
@@ -180,6 +186,30 @@ public class MainActivity extends Activity implements View.OnClickListener{
 		}
 	}
 	
+	public int order(){
+		String TableNumber = table.getText().toString();
+		String Menu = menu.getText().toString();
+		int time=0;
+		
+		if(TableNumber.getBytes().length <= 0
+				|| Menu.getBytes().length <= 0){	//빈값이 넘어올때의 처리
+			Toast.makeText(MainActivity.this, "값을 입력하세요." ,Toast.LENGTH_SHORT).show();
+			return -1;
+		}
+		else{
+			
+			ScheduleJob job = new ScheduleJob();
+			if(Menu == "BBQ")
+				time = 5;
+			else
+				time = 10;
+			
+			menulist.addItem(TableNumber, Menu, time, job);			
+		}
+				
+		return 0;
+	}
+	
 	Thread BtnThread = new Thread(new Runnable() {
 
         @Override
@@ -212,5 +242,17 @@ public class MainActivity extends Activity implements View.OnClickListener{
             }
         }
     });
+	
+	class ScheduleJob extends TimerTask{
+		
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			// function is implemented by song!!!
+			// vibrate
+			// print textlcd
+			// ...
+		}
+	}
 
 }
