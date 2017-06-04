@@ -37,6 +37,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 	private LinkedList WaitList;
 	private ListView customerview ;
 	private ListView waitlistview ;
+	private ListView menulistview;
 	private ListViewAdapter adapter1;
 	private ListViewAdapter adapter2;
 	private MenuAdapter menulist;
@@ -198,7 +199,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 		}
 		else{
 			
-			ScheduleJob job = new ScheduleJob();
+			ScheduleJob job = new ScheduleJob(TableNumber, Menu, menulist);
 			if(Menu == "BBQ")
 				time = 5;
 			else
@@ -244,6 +245,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
     });
 	
 	class ScheduleJob extends TimerTask{
+		private String TableNumber;
+		private String Menu;
+		
+		public ScheduleJob(String tn, String menu, MenuAdapter menuadapter){
+			this.TableNumber = tn;
+			this.Menu = menu;
+		}
 		
 		@Override
 		public void run() {
@@ -252,6 +260,22 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			// vibrate
 			// print textlcd
 			// ...
+			
+			menulist.RemoveItem(TableNumber, Menu);
+			Toast.makeText(MainActivity.this, "Complete menu" ,Toast.LENGTH_SHORT).show();
+			
+			runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                	menulist.notifyDataSetChanged();
+                }
+            });
+			try {
+				this.finalize();
+			} catch (Throwable e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
