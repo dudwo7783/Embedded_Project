@@ -28,6 +28,7 @@ static int dd_piezo_open(struct inode * inode, struct file * file)
 static int dd_piezo_release(struct inode * inode, struct file * file)
 {
 	gpio_free(piezo_gpios);
+	printk(KERN_INFO "dd_piezo release\n");
 	return 0;
 }
 

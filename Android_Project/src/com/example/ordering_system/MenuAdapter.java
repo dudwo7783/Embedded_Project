@@ -1,6 +1,7 @@
 package com.example.ordering_system;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +50,7 @@ public class MenuAdapter extends BaseAdapter {
         // 아이템 내 각 위젯에 데이터 반영
         workTextView.setImageResource(R.drawable.indexdot);
         cateTextView.setText(listViewItem.getTableNumber());
+        degTextView.setText(listViewItem.getMenu() + " : " + String.valueOf(listViewItem.getTime()));
 
         return convertView;
     }
@@ -70,11 +72,13 @@ public class MenuAdapter extends BaseAdapter {
     	MenuList item = new MenuList(tn,menu,time);
         listViewItemList.add(item);
         item.start(job);
+        
     }
     public void RemoveItem(String tn, String menu) {
     	for(int i=0; i<listViewItemList.size();i++){
     		if(listViewItemList.get(i).getTableNumber().equals(tn) && 
     				listViewItemList.get(i).getMenu().equals(menu)){
+    			listViewItemList.get(i).stop();
     			listViewItemList.remove(i);
     		}
     	}

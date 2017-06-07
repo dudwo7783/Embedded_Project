@@ -38,4 +38,8 @@ public class MenuList {
     public void start(TimerTask job){
     	timer.schedule(job,Time);
     }
+    public void stop(){
+    	timer.cancel();
+    	timer.purge();
+    }
 }

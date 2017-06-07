@@ -133,11 +133,11 @@ static int dd_textlcd_open(struct inode * inode, struct file * file){
 
 	initialize_textlcd();
 
-	set_ddram_address(0);
-	for(i=0 ; i<8 ; i++)   writebyte(pStr[i]);
+	//set_ddram_address(0);
+	//for(i=0 ; i<8 ; i++)   writebyte(pStr[i]);
 
-	set_ddram_address(1);
-	for(i=0 ; i<8 ; i++)   writebyte(pStr1[i]);
+	//set_ddram_address(1);
+	//for(i=0 ; i<8 ; i++)   writebyte(pStr1[i]);
 
 	return 0;
 }

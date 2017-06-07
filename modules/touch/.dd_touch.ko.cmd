@@ -1,0 +1,1 @@
+cmd_/home/youngjae/edk9/modules/touch/dd_touch.ko := arm-none-linux-gnueabi-ld -EL -r  -T /home/youngjae/edk9/linux/scripts/module-common.lds --build-id  -o /home/youngjae/edk9/modules/touch/dd_touch.ko /home/youngjae/edk9/modules/touch/dd_touch.o /home/youngjae/edk9/modules/touch/dd_touch.mod.o

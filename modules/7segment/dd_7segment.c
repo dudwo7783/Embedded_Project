@@ -107,7 +107,7 @@ int Getsegmentcode_base(int x){
 
 		case 6 :
 			ibuf[0] = 1;
-			ibuf[1] = 1;
+			ibuf[2] = 1;
 			ibuf[3] = 1;
 			ibuf[4] = 1;
 			ibuf[5] = 1;
