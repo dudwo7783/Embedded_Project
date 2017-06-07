@@ -84,6 +84,11 @@ public class MenuAdapter extends BaseAdapter {
     	}
     }
     public void RemoveAllItem(){
+    	int size = listViewItemList.size();
+    	
+    	for(int i=0; i<size; i++){
+    		listViewItemList.get(i).stop();
+    	}
     	listViewItemList.clear();
     }
 
